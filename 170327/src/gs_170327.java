@@ -31,14 +31,13 @@ public class gs_170327 {
 			System.out.println("======================");
 			while( dis.available() > 0 ){
 				String data = dis.readLine();
-				String[] split = data.split(","); // ÀĞ¾î¿Â µ¥ÀÌÅÍ¸¦ ½°Ç¥·Î ±¸ºĞÇÏ¿© split ¹è¿­¿¡ ÀúÀåÇÑ´Ù.
+				String[] split = data.split(","); // ì½ì–´ì˜¨ ë°ì´í„°ë¥¼ ì‰¼í‘œë¡œ êµ¬ë¶„í•˜ì—¬ split ë°°ì—´ì— ì €ì¥í•œë‹¤.
 				System.out.print(split[0] + "\t"); // goods_name
 				System.out.print(split[1]+ "\t"); // goods_price
 				System.out.println(split[2]); // goods_stock
 				goods_name[x+1] = split[0];
 				goods_price[x+1] = Integer.parseInt(split[1]);
 				goods_stock[x+1] = Integer.parseInt(split[2]);
-				
 				x++;
 			}
 			System.out.println();
@@ -120,7 +119,7 @@ public class gs_170327 {
 						}
 					scan.nextLine();
 					
-					// Ãâ·ÂÀ» À§ÇØ »óÇ°¼±ÅÃ, ¼ö·®À» ¹è¿­¿¡ µû·Î ÀúÀå
+					// ì¶œë ¥ì„ ìœ„í•´ ìƒí’ˆì„ íƒ, ìˆ˜ëŸ‰ì„ ë°°ì—´ì— ë”°ë¡œ ì €ì¥
 					select_arr[cnt] = select;
 					count_arr[cnt] = count;
 					cnt++;
@@ -135,7 +134,7 @@ public class gs_170327 {
 							+ count_arr[i] + "\t" + (goods_price[select_arr[i]] * count_arr[i]));
 					all_sum += (goods_price[select_arr[i]] * count_arr[i]);
 				}
-				System.out.println("\n"+"all price : " + all_sum);*/ // Ãâ·Â È®ÀÎ
+				System.out.println("\n"+"all price : " + all_sum);*/ // ì¶œë ¥ í™•ì¸
 				
 				for(i=0;i<cnt;i++){
 					for(int j=1;j<=goods_size;j++){
@@ -145,7 +144,7 @@ public class gs_170327 {
 						}
 					}
 				}
-				//System.out.println(arr[1] +" "+arr[2]+" "+arr[3]); // Ãâ·Â È®ÀÎ
+				//System.out.println(arr[1] +" "+arr[2]+" "+arr[3]); // ì¶œë ¥ í™•ì¸
 				for( i=1;i<=goods_size;i++){
 					if( arr[i] > 0){
 						System.out.println(goods_name[i] + "\t" + goods_price[i] + "\t" + arr[i] + "\t" + (goods_price[i]*arr[i]));
@@ -154,9 +153,9 @@ public class gs_170327 {
 				}
 				System.out.println("total : " + total_sum);
 				
-				for(i=1;i<=goods_size;i++){ // ¸¶°¨À» À§ÇØ ÇöÀç±îÁö ÀÔ·ÂµÈ count ´©Àû
+				for(i=1;i<=goods_size;i++){ // ë§ˆê°ì„ ìœ„í•´ í˜„ì¬ê¹Œì§€ ì…ë ¥ëœ count ëˆ„ì 
 					new_arr[i] += arr[i];
-					//System.out.println(new_arr[i]); // Ãâ·Â È®ÀÎ
+					//System.out.println(new_arr[i]); // ì¶œë ¥ í™•ì¸
 				}
 				
 				System.out.print("continue - 1 close - 2 : ");
@@ -204,7 +203,7 @@ public class gs_170327 {
 					System.out.println(goods_name[select_arr[i]] + "\t" + goods_price[select_arr[i]] + "\t" 
 							+ count_arr[i] + "\t" + (goods_price[select_arr[i]] * count_arr[i]));}
 					all_sum += (goods_price[select_arr[i]] * count_arr[i]);
-					// ÇÑ¸í¸¸ ¹Ş°í ³¡³ª´Â ÄÚµå
+					// í•œëª…ë§Œ ë°›ê³  ëë‚˜ëŠ” ì½”ë“œ
 				}*/
 			}while(open != 2);
 
