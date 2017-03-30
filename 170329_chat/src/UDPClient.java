@@ -10,18 +10,19 @@ public class UDPClient {
       DatagramSocket ds = new DatagramSocket(); // 데이터를 전송하기 위한 DatagramSocket 생성
       InetAddress ia = InetAddress.getByName("127.0.0.1");
       //DatagramPacket에 들어갈 ip주소는 InetAddress 형태여야 하기 때문
+      Thread urc = new Thread(new UDPReceiverClass(ds));
+	  urc.start();
       while(true){
     	  //서버로 전송할 내용 입력 
-    	  System.out.print("message : ");
-    	  
+    	  System.out.print("message : ");    	  
     	  /*
     	   * BufferedReader message = new BufferedReader(new InputStreamReader(System.in)); 
     	   * // 키보드로부터 입력받아 저장
     	   * String str = message.readLine();
     	   * byte[] sendTo_s = str.getBytes();
     	   * //입력받은 문자열을 바이트배열로 바꾸어 저장한다.
-    	   * */   
-    	 
+    	   * */       	
+    	  
     	  String str = scan.nextLine();
     	  byte[] sendTo_s = new byte[512];
     	  sendTo_s = str.getBytes();
@@ -38,6 +39,7 @@ public class UDPClient {
     	  String receive_str = new String(dp.getData());
     	  System.out.println("server ip : " + dp.getAddress() + " server port : " + dp.getPort());
     	  System.out.println("receive from server : " + receive_str);*/
+    	  
     	  
     	  }
       
