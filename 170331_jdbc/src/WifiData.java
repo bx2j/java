@@ -11,8 +11,9 @@ public class WifiData {
 		Connection con = DriverManager.getConnection(
 				"jdbc:mysql://192.168.23.91:33066/ex2?useSSL=true&verifyServerCertificate=false","root","1q2w3e");
 		Statement stmt = con.createStatement();
-		
-		// file i/o
+		LoadFile lf = new LoadFile(stmt);
+		lf.FileCall();
+		/*// file i/o
 		FileInputStream fis = new FileInputStream("C:\\Users\\kopo\\Desktop\\와이파이.txt");
 		BufferedInputStream bis = new BufferedInputStream(fis);
 		BufferedReader br = new BufferedReader(new InputStreamReader(bis));
@@ -20,7 +21,7 @@ public class WifiData {
 		// label delete
 		br.readLine();
 		
-		// file load & 
+		// file load 
 		while( (data=br.readLine()) != null ){			
 			String[] split = data.split("\t");
 			String D_data;
@@ -33,9 +34,11 @@ public class WifiData {
 			split[8],split[9],split[10],split[11],split[12],split[13],split[14]);
 			stmt.execute(D_data);
 			cnt++;
-		}
+		}*/
+		LoadClass ls = new LoadClass(stmt);
+		ls.call();
 		// find nearby particular latitude & longitude 
-		String str ;
+		/*String str ;
 		double lat = 37.3860521 , lng = 127.1214038;
 		str = String.format("select * from wifi where SQRT(POWER(latitude-%f,2) + POWER(longitude-%f,2))="
 				+ "(select MIN(SQRT(POWER (latitude-%f,2) + POWER(longitude-%f,2))) from wifi);", lat,lng,lat,lng);
@@ -48,10 +51,10 @@ public class WifiData {
 			+ "\t" + rest.getString(7) + "\t" + rest.getString(8) + "\t" + rest.getString(9)
 			+ "\t" + rest.getString(10) + "\t" + rest.getString(11) + "\t" + rest.getString(12)
 			+ "\t" + rest.getString(13) + "\t" + rest.getString(14) + "\t" + rest.getString(15));
-		}
-		br.close();
+		}*/
+		/*br.close();
 		bis.close();
-		fis.close();
+		fis.close();*/
 		stmt.close();
 	}
 }
