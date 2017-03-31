@@ -14,7 +14,7 @@ public class WifiData {
 		LoadFile lf = new LoadFile(stmt);
 		lf.FileCall();
 		/*// file i/o
-		FileInputStream fis = new FileInputStream("C:\\Users\\kopo\\Desktop\\¿ÍÀÌÆÄÀÌ.txt");
+		FileInputStream fis = new FileInputStream("C:\\Users\\kopo\\Desktop\\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.txt");
 		BufferedInputStream bis = new BufferedInputStream(fis);
 		BufferedReader br = new BufferedReader(new InputStreamReader(bis));
 
