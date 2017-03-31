@@ -10,7 +10,8 @@ public class LoadFile {
 	public void FileCall() throws IOException, SQLException{
 		int cnt = 0; String data = null;
 		// file i/o
-		FileInputStream fis = new FileInputStream("C:\\Users\\kopo\\Desktop\\와이파이.txt");
+		FileInputStream fis = new FileInputStream
+				("C:\\Users\\kopo\\Desktop\\gith\\170331_jdbc\\src\\와이파이.txt");
 		BufferedInputStream bis = new BufferedInputStream(fis);
 		BufferedReader br = new BufferedReader(new InputStreamReader(bis));
 
