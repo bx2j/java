@@ -1,0 +1,11 @@
+select round((6371 * acos(cos(radians(현재위도)) * cos(radians(지정위도)) * cos(radians(지정경도) - radians(현재경도)) + sin(radians(현재위도)) * sin(radians(지정위도)))),2) AS distance;
+- round ,2 소수점 2자리까지 출력
+
+select latitude,longitude, (round((6371 * acos(cos(radians(lat)) * cos(radians(latitude)) * cos(radians(longitude) - radians(lng)) + sin(radians(lat)) * sin(radians(latitude)))),2) AS distance from wifi having distance <= 3 order by distance limit 0,5;
+
+-- db 상에서 가능 
+select latitude,longitude, (6371 * acos(cos(radians(37.3860521)) * cos(radians(latitude)) * cos(radians(longitude) - radians(127.1214038)) + sin(radians(37.3860521)) * sin(radians(latitude)))) AS distance from wifi having distance <= 50 order by distance;
+
+select *, (6371 * acos(cos(radians(37.3860521)) * cos(radians(latitude)) * cos(radians(longitude) - radians(127.1214038)) + sin(radians(37.3860521)) * sin(radians(latitude)))) AS distance from wifi having distance <= 50 order by distance;
+
+
