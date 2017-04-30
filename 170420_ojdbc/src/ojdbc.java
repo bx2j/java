@@ -17,9 +17,9 @@ public class ojdbc {
 		Statement stmt = conn.createStatement();
 
 		try{
-		LoadCsv ls = new LoadCsv(stmt);
-		ls.FileCall();
-		conn.commit();
+			LoadCsv ls = new LoadCsv(stmt);
+			ls.FileCall();
+			conn.commit();
 		}catch(SQLException e){
 			conn.rollback();
 		}
