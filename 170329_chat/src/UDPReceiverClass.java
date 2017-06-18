@@ -16,7 +16,7 @@ public class UDPReceiverClass implements Runnable{
 		  	  	this.ds_receiver.receive(dp); //서버로부터 내용을 전송 받음				       
 		  	  	//전송 받은 내용을 출력.
 		  	  	String receive_str = new String(dp.getData());
-		  	  	//System.out.println("server ip : " + dp.getAddress() + " server port : " + dp.getPort());
+		  	  	
 		  	  	System.out.println("\nreceive from server : " + receive_str);
 	  	  	}
 		} catch (Exception e) {
@@ -24,7 +24,7 @@ public class UDPReceiverClass implements Runnable{
 			e.printStackTrace();
 		}
 	}
-
-	
-
 }
+
+
+//System.out.println("server ip : " + dp.getAddress() + " server port : " + dp.getPort());
