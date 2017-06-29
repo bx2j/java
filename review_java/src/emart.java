@@ -67,7 +67,8 @@ public class emart {
 			String k08_subString; // 잘라낸 문자 저장하기 위한 변수 k08_subString
 			k08_subString = k08_cut(k08_item[i],17); // byte단위로 잘라내기 위한 문자열과 자를 byte길이를 cut함수로 넘겨줌
 			while(true){
-		    	   if ( k08_subString.getBytes().length >= 17){ // 17만큼 잘라낸 문자에 대해 bytes길이가 17이상이라면 while문을 수행하지 않고
+		    	   if ( k08_subString.getBytes().length >= 17){ 
+		    		   // 17만큼 잘라낸 문자에 대해 bytes길이가 17이상이라면 while문을 수행하지 않고
 		    		   break;
 		    	   }
 		    	   k08_subString += " "; // 길이가 17이 안된다면 잘라낸 문자 뒤에 공백을 추가해 준다.
@@ -88,7 +89,8 @@ public class emart {
 		System.out.printf("%28s %33s\n","(*)면 세  물 품",k08_df.format(k08_taxfree_sum)); // 면세 물품의 총 합
 		System.out.printf("%28s %33s\n","   과 세  물 품",k08_df.format((int)(k08_taxfreeno_sum/1.1))); // 과세 물품 가격 - 세금을 제외한
 		System.out.printf("%29s %33s\n","   부   가   세",k08_df.format(k08_taxfreeno_sum-(int)(k08_taxfreeno_sum/1.1))); // 부가세
-		System.out.printf("%30s %33s\n","합        계",k08_df.format(k08_all_sum)); // 총 합계 = 면세 물품의 합 + 과세 물품의 합 + 과세 물품에 대한 부가세
+		System.out.printf("%30s %33s\n","합        계",k08_df.format(k08_all_sum)); 
+		// 총 합계 = 면세 물품의 합 + 과세 물품의 합 + 과세 물품에 대한 부가세
 		System.out.printf("%s %43s\n","결  제  대  상  금  액",k08_df.format(k08_all_sum)); // 합계에 대한 카드결제 금액
 		System.out.printf("------------------------------------------------------------------\n");
 		System.out.printf("004 하  나");
@@ -96,7 +98,7 @@ public class emart {
 		System.out.printf("카드결제");
 		System.out.printf("%44s %10s\n","일시불 /",k08_df.format(k08_all_sum));
 		System.out.printf("------------------------------------------------------------------\n");
-		System.out.printf("홍필두 고객님의 포인트 현황입니다.\n");
+		System.out.printf("홍*두 고객님의 포인트 현황입니다.\n");
 		System.out.printf("이마트(신세계) 포인트 3120점 보유\n1000점 이상부터 현금처럼 사용 할 수 있습니다.\n");
 		System.out.printf("------------------------------------------------------------------\n");
 		System.out.printf("감사 합니다.\n");
