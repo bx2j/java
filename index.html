@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/JavaScript"  src=http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js></script>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+body{
+	margin:0;
+	padding: 0;
+}
+#wrap{
+	position: relative;
+}
+#divView {
+	position:absolute;
+	display:none;
+	background-color:#E8EAF6;
+	border:solid 2px #9FA8DA;
+	width:150px;
+	height:150px;
+	padding:10px;
+}
+</style>
+</head>
+<body>
+<style>
+svg{
+	display: block;
+	margin: 0 auto;
+}
+</style>
+<svg id=svgElement width="800" height="600" viewBox="0 0 800 600">
+	<rect x=0 y=0 width="100%" height="100%" rx="10" ry="10"  
+       		style=" fill: white; stroke: black; stroke-width: 1; " /> <!-- 테두리 보여지는 rect -->
+	<g transform="translate(350,350)" >
+		<g fill=none stroke=blue stroke-width=3>
+			<line x1="0" y1="0" x2="50" y2="0" />
+    		<line x1="0" y1="0" x2="0" y2="50" />
+    	</g>
+	</g>
+	 
+	<circle  cx=350 cy=350 r=3 fill=orange />
+	<!-- <circle id="circle0" cx="40" cy="40" r="40" style="fill: orange; stroke: black; stroke-width: 1;" /> -->
+	<rect id="circle0" x=400 y=10 width=40 height=40 />
+	
+
+</svg>
+
+<script>
+
+"use strict";
+	var delay = 90;
+	var svgElement = document.getElementById("svgElement");
+	var circle0 = document.getElementById("circle0");
+	
+	circle0.vx = 0; // 가로 방향
+	circle0.vy = 60; // 세로 방향
+	
+	//var r = circle0.r.baseVal.value; // circle 반지름
+	//document.write("r : " + r + "<br>");
+	var r1 = circle0.width.baseVal.value; // rect 가로 길이
+	var r2 = circle0.height.baseVal.value; // rect 세로 길이
+	document.write("r1 : " + r1 + "r2 : " + r2 + "<br>");
+	
+	var boxWidth = svgElement.width.baseVal.value;
+	document.write("boxWidth : " + boxWidth + "<br>");
+	var boxHeight = svgElement.height.baseVal.value;
+	document.write("boxHeight : " + boxHeight + "<br>");
+	
+	var requestAnimationFrameID = window.requestAnimationFrame(doAnim);
+	document.write("requestAnimationFrameID : " + requestAnimationFrameID + "<br>");
+	
+	function s2d(s){
+		return (s / 1000) * delay;
+	}
+	
+	function doAnim(){
+		requestAnimationFrameID = window.requestAnimationFrame(doAnim);
+		
+		//circle0.cx.baseVal.value += s2d(circle0.vx); // circle
+		//circle0.cy.baseVal.value += s2d(circle0.vy); // circle
+				
+		//if( (circle0.cx.baseVal.value >= (boxWidth - r)) || (circle0.cy.baseVal.value >= (boxHeight - r))) // circle 한번 부딪힐때 멈춤
+		//	window.cancelAnimationFrame(requestAnimationFrameID);
+		
+		//if (circle0.cx.baseVal.value >= (boxWidth - r)) // circle 두번 부딪힐때 멈춤
+		//	circle0.vx *= -1;
+		//if (circle0.cy.baseVal.value >= (boxHeight - r) || circle0.cx.baseVal.value <= r) // circle 두번 부딪힐때 멈춤
+		//	window.cancelAnimationFrame(requestAnimationFrameID);	        
+		
+		circle0.x.baseVal.value += s2d(circle0.vx); // rect
+		circle0.y.baseVal.value += s2d(circle0.vy); // rect
+		
+		if (circle0.x.baseVal.value >= (boxWidth-r1)) // rect
+	        circle0.vx *= -1;	     
+	    //document.write(circle0.x.baseVal.value + " ... " + circle0.y.baseVal.value + "<BR>");
+	 	if (circle0.y.baseVal.value >= (boxHeight - r2) || circle0.x.baseVal.value <= 0){ // rect
+	 		window.cancelAnimationFrame(requestAnimationFrameID);
+	 		selectMake();	 		
+	 	}
+	}
+	
+	
+	function makeRect(){
+		var svgElement = document.getElementById("svgElement");
+		var xmlns = "http://www.w3.org/2000/svg";
+		var elem = document.createElementNS(xmlns,"rect");
+		
+		elem.setAttributeNS(null,"x",randomX(10,(boxWidth-r1)));
+		elem.setAttributeNS(null,"y",30);
+		elem.setAttributeNS(null,"width",r1);
+		elem.setAttributeNS(null,"height",r2);
+		elem.setAttributeNS(null,"fill",randomColor());
+		
+		return svgElement.appendChild(elem);	
+	}
+	
+	function makeCircle(){
+		var svgElement = document.getElementById("svgElement");
+		var xmlns = "http://www.w3.org/2000/svg";
+		var elem = document.createElementNS(xmlns,"circle");
+		
+		elem.setAttributeNS(null,"cx",randomX(30, (boxWidth-30)));
+		elem.setAttributeNS(null,"cy",40);
+		elem.setAttributeNS(null,"r",30);
+		elem.setAttributeNS(null,"fill",randomColor());
+		
+		return svgElement.appendChild(elem);
+	}
+	
+	function selectMake(){
+		var rand = Math.floor( (Math.random() * 10) +1);
+		if(rand == 1 || rand == 3 || rand == 5 || rand == 7 || rand == 9)
+			return makeRect();
+		else
+			return makeCircle();
+		
+	}
+	function randomX(x1,x2){ // x1 최대 x2 최소
+		return Math.floor( (Math.random() * (x2 - x1 + 1)) + x1 );
+	}
+	
+	function randomColor() {
+    	return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    }
+	
+</script>
+</body>
+</html>
